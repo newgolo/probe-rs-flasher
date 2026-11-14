@@ -1,0 +1,5 @@
+binaries/**/*.exe binary
+binaries/**/probe-rs-flasher binary
+*.ico binary
+*.png binary
+*.rgba binary
