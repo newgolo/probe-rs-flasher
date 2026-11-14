@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/icon-128.png" width="96" height="96" alt="Probe-rs Flasher icon">
+</p>
+
 # Probe-rs Flasher
 
 **English** · [简体中文](README.zh-CN.md)
@@ -33,6 +37,19 @@ title bar.
 - **Localization** — runtime English / Chinese switch; the choice is stored in the user
   configuration directory and restored on the next start.
 - **Portable output** — one executable per platform with no extra runtime libraries.
+
+## Download
+
+Prebuilt single-file binaries are published on the
+[releases page](https://github.com/newgolo/probe-rs-flasher/releases):
+
+| Platform | File |
+| --- | --- |
+| Windows 10/11 x64 | `probe-rs-flasher.exe` |
+| Linux x86_64 | `probe-rs-flasher` |
+
+Each release includes SHA-256 checksums. To build from source instead, see
+[Building](#building).
 
 ## Requirements
 
@@ -183,6 +200,8 @@ The registry reloads immediately — no restart needed.
 | `build-linux.sh` | Linux x86_64 build script |
 | `build-windows.sh` | Windows x64 cross-compilation script |
 | `scripts/bootstrap.sh` | Reproducible workspace setup and build |
+| `tools/gen_icon.py` | Generates the application icon set (`assets/`) |
+| `build.rs` | Embeds the `.ico` into Windows executables via `windres` |
 
 All blocking work happens on the worker thread; the UI never stalls. **Abort** combines an
 atomic flag with probe-rs progress callbacks.

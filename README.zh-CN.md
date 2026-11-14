@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/icon-128.png" width="96" height="96" alt="Probe-rs Flasher 图标">
+</p>
+
 # Probe-rs Flasher
 
 [English](README.md) · **简体中文**
@@ -29,6 +33,17 @@
 - **日志面板**：带时间戳的操作日志，实时显示进度条与百分比。
 - **国际化**：运行时切换英文 / 中文，选择结果保存在用户配置目录，下次启动自动恢复。
 - **单文件产物**：每个平台一个可执行文件，不需要额外的运行库。
+
+## 下载
+
+预编译的单文件二进制发布在 [Releases](https://github.com/newgolo/probe-rs-flasher/releases)：
+
+| 平台 | 文件 |
+| --- | --- |
+| Windows 10/11 x64 | `probe-rs-flasher.exe` |
+| Linux x86_64 | `probe-rs-flasher` |
+
+每个版本附带 SHA-256 校验文件；也可以参考下文自行编译。
 
 ## 环境要求
 
@@ -177,6 +192,8 @@ sudo apt install gcc-mingw-w64-x86-64 binutils-mingw-w64-x86-64
 | `build-linux.sh` | Linux x86_64 构建脚本 |
 | `build-windows.sh` | Windows x64 交叉编译脚本 |
 | `scripts/bootstrap.sh` | 可复现的工作区搭建与构建 |
+| `tools/gen_icon.py` | 生成应用图标（`assets/`） |
+| `build.rs` | 通过 `windres` 把 `.ico` 嵌入 Windows 可执行文件 |
 
 所有耗时操作都在后台线程执行，界面不会阻塞；「终止」通过原子标志与 probe-rs 的进度
 回调配合实现。

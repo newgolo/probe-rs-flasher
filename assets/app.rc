@@ -1,0 +1,2 @@
+/* Windows 可执行文件图标（由 build.rs 使用 windres 编译后链接） */
+1 ICON "assets/icon.ico"

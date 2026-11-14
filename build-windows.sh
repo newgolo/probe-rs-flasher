@@ -87,6 +87,11 @@ fi
 export CARGO_TARGET_X86_64_PC_WINDOWS_GNU_LINKER=x86_64-w64-mingw32-gcc
 export CC_x86_64_pc_windows_gnu=x86_64-w64-mingw32-gcc
 export AR_x86_64_pc_windows_gnu="$(command -v x86_64-w64-mingw32-ar || echo x86_64-w64-mingw32-ar)"
+# 用于把 assets/app.rc（应用图标）编译成资源目标文件
+if [ -z "${WINDRES:-}" ]; then
+    WINDRES="$(command -v x86_64-w64-mingw32-windres || true)"
+    [ -n "$WINDRES" ] && export WINDRES
+fi
 
 if [ "$PROFILE" = "release" ]; then
     # strip 掉符号，得到较小的单文件产物

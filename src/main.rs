@@ -10,6 +10,7 @@ mod chips;
 mod custom;
 mod firmware;
 mod i18n;
+mod icon;
 mod theme;
 mod worker;
 
@@ -31,6 +32,7 @@ fn main() -> eframe::Result<()> {
     let options = eframe::NativeOptions {
         viewport: egui::ViewportBuilder::default()
             .with_title("Probe-rs Flasher")
+            .with_icon(icon::window_icon())
             .with_inner_size(size)
             .with_min_inner_size([1000.0, 680.0])
             .with_decorations(false)
