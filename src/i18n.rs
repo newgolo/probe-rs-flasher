@@ -383,3 +383,38 @@ macro_rules! tt {
         )
     };
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn language_defaults_and_codes() {
+        assert_eq!(Lang::default(), Lang::En);
+        assert_eq!(Lang::from_code("en"), Some(Lang::En));
+        assert_eq!(Lang::from_code("EN-us"), Some(Lang::En));
+        assert_eq!(Lang::from_code(" zh-cn "), Some(Lang::Zh));
+        assert_eq!(Lang::from_code("klingon"), None);
+    }
+
+    #[test]
+    fn translation_lookup_and_fill() {
+        // 全局语言状态，放在同一个测试里避免并行测试互相干扰。
+        set_lang(Lang::En);
+        assert_eq!(t("连接设置"), "Connection");
+        assert_eq!(t("未收录的文案"), "未收录的文案");
+        assert_eq!(
+            fill(t("已加载 {}"), &["demo.bin".to_string()]),
+            "Loaded demo.bin"
+        );
+        set_lang(Lang::Zh);
+        assert_eq!(t("连接设置"), "连接设置");
+        assert_eq!(
+            vendor("STMicroelectronics(意法)"),
+            "STMicroelectronics(意法)"
+        );
+        set_lang(Lang::En);
+        assert_eq!(vendor("STMicroelectronics(意法)"), "STMicroelectronics");
+        assert_eq!(vendor("自定义芯片(导入)"), "Custom (imported)");
+    }
+}

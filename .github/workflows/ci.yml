@@ -37,8 +37,12 @@ jobs:
           sudo apt-get install -y --no-install-recommends \
             pkg-config libudev-dev libxkbcommon-dev libwayland-dev
 
+      - name: Prepare probe-rs workspace
+        run: BOOTSTRAP_PREPARE_ONLY=1 ./scripts/bootstrap.sh
+
       - name: Format check
-        run: cargo fmt -p probe-rs-flasher --check || true
+        working-directory: .build/probe-rs
+        run: cargo fmt -p probe-rs-flasher --check
 
       - name: Build and test
         run: ./scripts/ci.sh
