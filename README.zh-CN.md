@@ -36,14 +36,15 @@
 
 ## 下载
 
-预编译的单文件二进制发布在 [Releases](https://github.com/newgolo/probe-rs-flasher/releases)：
+预编译的单文件二进制（v0.1.0）：
 
-| 平台 | 文件 |
-| --- | --- |
-| Windows 10/11 x64 | `probe-rs-flasher.exe` |
-| Linux x86_64 | `probe-rs-flasher` |
+| 平台 | 下载 | 校验 |
+| --- | --- | --- |
+| Windows 10/11 x64 | [`probe-rs-flasher.exe`](https://github.com/newgolo/probe-rs-flasher/raw/main/binaries/v0.1.0/probe-rs-flasher.exe)（23 MB） | [`SHA-256`](https://github.com/newgolo/probe-rs-flasher/raw/main/binaries/v0.1.0/probe-rs-flasher.exe.sha256) |
+| Linux x86_64 | [`probe-rs-flasher`](https://github.com/newgolo/probe-rs-flasher/raw/main/binaries/v0.1.0/probe-rs-flasher)（19 MB） | [`SHA-256`](https://github.com/newgolo/probe-rs-flasher/raw/main/binaries/v0.1.0/probe-rs-flasher.sha256) |
 
-每个版本附带 SHA-256 校验文件；也可以参考下文自行编译。
+同样的文件也列在 [`binaries/`](binaries/v0.1.0/README.md) 目录下，后续版本会附加到
+[GitHub Releases](https://github.com/newgolo/probe-rs-flasher/releases)。也可以参考下文自行编译。
 
 ## 环境要求
 

@@ -40,16 +40,16 @@ title bar.
 
 ## Download
 
-Prebuilt single-file binaries are published on the
-[releases page](https://github.com/newgolo/probe-rs-flasher/releases):
+Prebuilt single-file binaries (v0.1.0):
 
-| Platform | File |
-| --- | --- |
-| Windows 10/11 x64 | `probe-rs-flasher.exe` |
-| Linux x86_64 | `probe-rs-flasher` |
+| Platform | Download | Checksum |
+| --- | --- | --- |
+| Windows 10/11 x64 | [`probe-rs-flasher.exe`](https://github.com/newgolo/probe-rs-flasher/raw/main/binaries/v0.1.0/probe-rs-flasher.exe) (23 MB) | [`SHA-256`](https://github.com/newgolo/probe-rs-flasher/raw/main/binaries/v0.1.0/probe-rs-flasher.exe.sha256) |
+| Linux x86_64 | [`probe-rs-flasher`](https://github.com/newgolo/probe-rs-flasher/raw/main/binaries/v0.1.0/probe-rs-flasher) (19 MB) | [`SHA-256`](https://github.com/newgolo/probe-rs-flasher/raw/main/binaries/v0.1.0/probe-rs-flasher.sha256) |
 
-Each release includes SHA-256 checksums. To build from source instead, see
-[Building](#building).
+The same files are listed under [`binaries/`](binaries/v0.1.0/README.md), and future versions
+are attached to [GitHub releases](https://github.com/newgolo/probe-rs-flasher/releases).
+To build from source instead, see [Building](#building).
 
 ## Requirements
 
