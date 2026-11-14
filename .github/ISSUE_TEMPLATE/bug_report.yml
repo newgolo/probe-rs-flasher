@@ -1,0 +1,61 @@
+name: Bug report
+description: Report a crash, a flashing failure or a UI problem
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug. Please fill in as much detail as possible.
+  - type: input
+    id: version
+    attributes:
+      label: Probe-rs Flasher version
+      description: Shown in the title bar (e.g. V0.1) or the binary you downloaded.
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - Windows 10/11 x64
+        - Linux x86_64 (X11)
+        - Linux x86_64 (Wayland)
+        - macOS
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: probe
+    attributes:
+      label: Debug probe
+      placeholder: e.g. ST-Link V2, J-Link, CMSIS-DAP, DAPLink, ESP-Prog
+    validations:
+      required: true
+  - type: input
+    id: chip
+    attributes:
+      label: Target chip
+      placeholder: e.g. STM32F103VC or a custom imported series
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Connect ...
+        2. Select ...
+        3. Click Flash
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+  - type: textarea
+    id: logs
+    attributes:
+      label: Log output
+      description: Copy the contents of the log panel (timestamps included).
+      render: text

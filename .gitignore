@@ -1,0 +1,17 @@
+# Build output
+/target
+/dist
+/.build
+
+# Rust backup files
+*.rs.bk
+
+# Screenshot helper output (PROBE_RS_FLASHER_SHOT)
+*.ppm
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.zed/

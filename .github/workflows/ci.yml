@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    name: Build & test (Linux x86_64)
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: Cache cargo
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: .build/probe-rs -> target
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            pkg-config libudev-dev libxkbcommon-dev libwayland-dev
+
+      - name: Format check
+        run: cargo fmt -p probe-rs-flasher --check || true
+
+      - name: Build and test
+        run: ./scripts/ci.sh
+
+      - name: Upload binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: probe-rs-flasher-linux-x86_64
+          path: .build/probe-rs/dist/probe-rs-flasher
+          if-no-files-found: warn

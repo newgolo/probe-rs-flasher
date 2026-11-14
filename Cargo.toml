@@ -1,0 +1,47 @@
+[package]
+name = "probe-rs-flasher"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.89"
+description = "Cross-platform GUI firmware flasher for microcontrollers, built on probe-rs"
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+repository = "https://github.com/newgolo/probe-rs-flasher"
+homepage = "https://github.com/newgolo/probe-rs-flasher"
+keywords = ["embedded", "flashing", "probe-rs", "firmware", "gui"]
+categories = ["embedded", "gui"]
+
+[features]
+# 默认包含全部能力：内置芯片库、bin/hex/elf/uf2 解析、CMSIS-DAP v1(HID) 调试器支持。
+default = ["builtin-targets", "builtin-formats", "cmsisdap-v1"]
+builtin-targets = ["probe-rs/builtin-targets"]
+builtin-formats = ["probe-rs/builtin-formats"]
+# CMSIS-DAP v1 走 HID，需要系统 libudev（Linux）；纯静态构建时可关闭。
+cmsisdap-v1 = ["probe-rs/cmsisdap_v1"]
+
+[dependencies]
+probe-rs = { path = "../probe-rs", version = "0.32.0", default-features = false }
+# 自定义芯片：从 CMSIS-Pack / 目标描述 YAML 生成 probe-rs 目标文件
+target-gen = { path = "../target-gen", version = "0.32.0", default-features = false }
+yaml_serde.workspace = true
+
+egui = "0.32"
+eframe = { version = "0.32", default-features = false, features = [
+    "default_fonts",
+    "glow",
+    "x11",
+    "wayland",
+] }
+
+chrono = { version = "0.4", default-features = false, features = ["clock"] }
+crc32fast = "1"
+ihex = "3"
+object = { version = "0.39", default-features = false, features = [
+    "elf",
+    "read_core",
+    "std",
+] }
+
+[[bin]]
+name = "probe-rs-flasher"
+path = "src/main.rs"

@@ -1,0 +1,29 @@
+# Changelog
+
+All notable changes to this project are documented in this file.
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this
+project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+## [0.1.0] - 2026-11-14
+
+### Added
+
+- Cross-platform GUI (egui / eframe) for flashing microcontrollers with probe-rs.
+- Probe, interface (SWD/JTAG), clock speed and reset mode selection.
+- Vendor → series → chip picker with keyword search over 4000+ built-in targets.
+- Custom chip import from CMSIS-Packs (`.pack`, unpacked directory, `.pdsc`) and target
+  description YAML, generated with `target-gen` and persisted per user.
+- Firmware loading for `.bin` / `.hex` / `.elf` / `.uf2` with drag & drop, CRC32 and a hex
+  viewer.
+- Flash, verify, erase, read-back, reset, memory read/write and best-effort abort.
+- Automation options: chip erase, auto-flash, auto-connect.
+- Timestamped log panel with a live progress bar.
+- English and Simplified Chinese UI with a one-click toggle in the title bar (English is the
+  default); the preference is persisted.
+- Single-file Windows and Linux builds with minimal runtime dependencies.
+- Reproducible workspace setup (`scripts/bootstrap.sh`) and GitHub Actions CI.
+
+[Unreleased]: https://github.com/newgolo/probe-rs-flasher/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/newgolo/probe-rs-flasher/releases/tag/v0.1.0
